@@ -15,10 +15,9 @@ public class BossRollState : State
 
         if (_bossController != null)
         {
-            Debug.Log($"Roll");
-
             _bossController.isAnyStateRunning = true;
             ApplyRoll(_bossController.facingDirection, _bossController.rollSpeed, _bossController.heigh);
+            _bossController.isRolling = true;
             _bossController.animatorController.Run();
         }
     }
@@ -34,6 +33,7 @@ public class BossRollState : State
     public override void ExitState()
     {
         _bossController.Flip();
+        _bossController.isRolling = false;
     }
 
     //-- AUXILIAR ------------------------------------------------------------------------------------------------------------------

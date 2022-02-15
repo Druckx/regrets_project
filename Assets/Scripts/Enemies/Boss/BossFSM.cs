@@ -19,6 +19,7 @@ public class BossFSM : FiniteStateMachine
 
     //-- STATES --------------------------------------------------------------------------------------------------------------------
 
+    private BossInitFightState _initState = new BossInitFightState();
     private BossIdleState _idleState = new BossIdleState();
     private BossRollState _rollState = new BossRollState();
     private BossJumpState _jumpState = new BossJumpState();
@@ -36,10 +37,24 @@ public class BossFSM : FiniteStateMachine
 
     private void Start()
     {
+        _bossController.isEntranceStateRunning = true;
+        SwitchState(_initState, _bossController);
+        StartCoroutine(EntranceControlCoroutine());
+    }
+
+
+    //-- ENTRANCE SATE -------------------------------------------------------------------------------------------------------------
+
+    private IEnumerator EntranceControlCoroutine()
+    {
+        while (_bossController.isEntranceStateRunning)
+        {
+            yield return null;
+        }
+
         SwitchState(_idleState, _bossController);
         StartCoroutine(GeneralControlCoroutine());
     }
-
 
     //-- GENERAL COROUTINE ---------------------------------------------------------------------------------------------------------
 

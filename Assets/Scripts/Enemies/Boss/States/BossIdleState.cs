@@ -17,8 +17,6 @@ public class BossIdleState : State
 
         if (_bossController != null)
         {
-            Debug.Log($"Idle");
-
             _bossController.isAnyStateRunning = true;
             _totalIdleTime = 1.5f;
             ApplyIdle();

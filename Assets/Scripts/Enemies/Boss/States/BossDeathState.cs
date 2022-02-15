@@ -16,14 +16,29 @@ public class BossDeathState : State
         if (_bossController != null)
         {
             _bossController.isAnyStateRunning = true;
+            _bossController.isFallen = true;
 
             _movement.Set(0.0f, 0.0f, 0.0f);
+            Flip();
             _bossController.animatorController.Defeated();
+            _bossController.Defeated();
         }
     }
 
     public override void UpdateState(float delta) {}
 
     public override void ExitState() {}
+
+    private void Flip()
+    {
+        if (_bossController.player.transform.position.x > _bossController.transform.position.x && _bossController.facingDirection < 0)
+        {
+            _bossController.Flip();
+        }
+        else if (_bossController.player.transform.position.x < _bossController.transform.position.x && _bossController.facingDirection > 0)
+        {
+            _bossController.Flip();
+        }
+    }
 
 }

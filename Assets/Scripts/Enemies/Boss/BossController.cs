@@ -36,8 +36,11 @@ public class BossController : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;
 
     [Header("States Variables")]
+    public bool isEntranceStateRunning;
     public bool isAnyStateRunning;
     public bool canCheckJumpFinish;
+    public bool isRolling;
+    public bool isFallen;
 
     [Header("Jump Parabola Variable")]
     public ParabolaController parabolaController;
@@ -56,6 +59,9 @@ public class BossController : MonoBehaviour
     private Vector3 _gravity;
     public bool canChangeGravity;
 
+    [Header("End Dialogue")]
+    public GameObject dialogue;
+
     //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
 
     private void Awake()
@@ -69,9 +75,12 @@ public class BossController : MonoBehaviour
 
     private void Start()
     {
+        isEntranceStateRunning = true;
         isAnyStateRunning = true;
         canCheckJumpFinish = false;
         rigidBody.useGravity = false;
+        isRolling = false;
+        isFallen = false;
     }
 
     private void Update()
@@ -83,7 +92,7 @@ public class BossController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetGravity();
+        //SetGravity();
     }
 
     //-- AUXILIAR ------------------------------------------------------------------------------------------------------------------
@@ -96,13 +105,18 @@ public class BossController : MonoBehaviour
 
     public void Entrance()
     {
-        //rigidBody.useGravity = true;
+        rigidBody.useGravity = true;
     }
 
     private void SetGravity()
     {
         _gravity = globalGravity * gravityScale * Vector3.up;
         rigidBody.AddForce(_gravity, ForceMode.Acceleration);
+    }
+
+    public void Defeated()
+    {
+        dialogue.SetActive(true);
     }
 
 #if UNITY_EDITOR

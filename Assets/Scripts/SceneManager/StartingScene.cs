@@ -15,8 +15,13 @@ public class StartingScene : MonoBehaviour
 
     public Animator playerAnimator;
 
-    public Dialogue dialogue;
-    public DialogObject dialogObject;
+    //Stored current VA when inside
+    public VIDE_Assign dialogue;
+
+    //Reference to our diagUI script for quick access
+    public VIDEUIManager1 diagUI;
+
+    public ObjectStatus eventHappened;
 
 
     private void Start()
@@ -40,13 +45,29 @@ public class StartingScene : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         sceneManager.ChangePlayerPosition(position);
-
-        yield return new WaitForSeconds(2);
-        //dialogue.ShowDialogue(dialogObject);
-        yield return new WaitForSeconds(1);
-        playerAnimator.SetBool("Stand", true);
+        diagUI.Interact(dialogue);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (eventHappened.eventAlreadyHappened)
+            {
+                this.gameObject.SetActive(false);
+                return;
+            }
+            else
+            {
+                diagUI.Interact(dialogue);
+            }
+        }
+    }
+
+    public void Stand()
+    {
+        playerAnimator.SetBool("Stand", true);
+    }
 
     private void OnSceneComplete()
     {

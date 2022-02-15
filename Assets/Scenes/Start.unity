@@ -2267,8 +2267,9 @@ MonoBehaviour:
   initialPosition: {x: -485, y: 7.95, z: 0}
   initialScene: House
   playerAnimator: {fileID: 1514903493648472461}
-  dialogue: {fileID: 0}
-  dialogObject: {fileID: 11400000, guid: b494c837141ed4343ab243e707275af2, type: 2}
+  dialogue: {fileID: 1623151282}
+  diagUI: {fileID: 401197553}
+  eventHappened: {fileID: 11400000, guid: 6ab9b0d0bf7574b4497cd831fcaa082f, type: 2}
 --- !u!4 &540182176
 Transform:
   m_ObjectHideFlags: 0
@@ -14985,6 +14986,84 @@ Transform:
   m_Father: {fileID: 524633533}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1623151280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1623151281}
+  - component: {fileID: 1623151282}
+  m_Layer: 0
+  m_Name: InitDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623151281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623151280}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2009657131}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623151282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623151280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8b99d8a12e39e4b94d2d7162c7c978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diags:
+  - BossDialog
+  - Charlie
+  - CommentModifier
+  - CrazyCap
+  - DefeatFirstBossDialogue
+  - DEMO_Condition
+  - demo_Narration
+  - Example3Dialogue
+  - Example4_dialogue
+  - IntroDialogue
+  - Item_LookUp
+  - Laura
+  - MrCube
+  - NPCOnly
+  - PruebaChris
+  - QuestChartDemo
+  - TriggeredDude
+  - Witch
+  assignedIndex: 9
+  assignedID: 88920
+  assignedDialogue: IntroDialogue
+  interactionCount: 0
+  alias: 
+  overrideStartNode: -1
+  defaultNPCSprite: {fileID: 0}
+  defaultPlayerSprite: {fileID: 0}
+  targetManager: {fileID: 0}
+  preload: 0
+  notuptodate: 0
+  startp: 0
+  loadtag: 
+  langs: []
+  S_playerDiags: []
+  S_actionNodes: []
 --- !u!1 &1629271348
 GameObject:
   m_ObjectHideFlags: 0
@@ -16205,6 +16284,7 @@ Transform:
   m_Children:
   - {fileID: 401197552}
   - {fileID: 1864780154}
+  - {fileID: 1623151281}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

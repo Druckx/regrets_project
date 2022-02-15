@@ -28,7 +28,6 @@ public class KatanaController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.gameObject.layer == 7)
         {
             audioSource.clip = clipAttackHit;

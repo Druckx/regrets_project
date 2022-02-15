@@ -39,7 +39,8 @@ public class PlayerKnockback : PlayerHabilities
         //bridgePlayerAudio.ReproduceFX("KnockBack");                   // KNOCKBACK / GET DAMAGE FX
         _player.CantMoveUntil(_player.timeToWait - 0.5f);
         _player.playerAnimator.SetTrigger("Get Hit");
-        _playerCombatAnimator.FinishCombo();
+        _playerCombatAnimator.weapon.SetActive(false);
+        _playerCombatAnimator.EndCombo();
 
 
     }
@@ -63,7 +64,7 @@ public class PlayerKnockback : PlayerHabilities
 
         _player.CantMoveUntil(_player.timeToWait - 0.5f);
         _player.playerAnimator.SetTrigger("Get Hit");
-        _playerCombatAnimator.FinishCombo();
+        _playerCombatAnimator.EndCombo();
     }
 
     //-- DEATH KNOCKBACK -----------------------------------------------------------------------------------------------------------
@@ -73,7 +74,7 @@ public class PlayerKnockback : PlayerHabilities
         _player.canChangeGravity = false;
         _player.gravityScale = 0;
         movement.Set(0.0f, 10f, 0.0f);
-        _playerCombatAnimator.FinishCombo();
+        _playerCombatAnimator.EndCombo();
         _player.rigidBody.AddForce(movement, ForceMode.Impulse);
         _player.CantMoveUntil(_player.timeToWait);
         StartCoroutine(WaitToChangeGravity());

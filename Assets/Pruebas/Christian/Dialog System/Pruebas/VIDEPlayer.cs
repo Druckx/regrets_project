@@ -22,7 +22,7 @@ public class VIDEPlayer : MonoBehaviour
     public List<string> demo_Items = new List<string>();
     public List<string> demo_ItemInventory = new List<string>();
 
-    //Reference
+    //Reference To Player
     public PlayerController player;
 
     void OnTriggerEnter(Collider other)
